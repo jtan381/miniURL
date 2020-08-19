@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <style>
+      .wrapper {
+        /* color: blue;
+        font-family: verdana;
+        font-size: 300%; */
+        width: 50%;
+        display: grid;
+        grid-template-rows: auto auto;
+        /* grid-template-columns: auto; */
+      }
+
+      .content {
+        /* color: red;
+        font-family: courier;
+        font-size: 160%; */
+        display: grid;
+        grid-template-columns: 40% 50%;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Create miniURL</h1>
+      <form action="/add" method="post">
+        <div class="wrapper">
+          <div class="content">
+            <label><b>orginalURL</b></label>
+            <input type="text" placeholder="Enter orginalURL" name="orginalURL" id="orginalURL" required>
+          </div>
+          <div class="content">
+            <label><b>customize extension</b></label>
+            <input type="text" placeholder="Enter customize extension" name="extension" id="extension">
+          </div>
+        </div>
+        <button class="generate">Generate</button>
+      </form>
+    </div>
+  </body>
+
+</html>
