@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <style>
+            .wrapper {
+                width: 50%;
+                display: grid;
+                grid-template-rows: auto auto auto;
+                /* grid-template-columns: auto; */
+            }
+
+            .content {
+                display: grid;
+                grid-template-columns: 100px auto;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class=wrapper>
+            <div class=content>
+                <p> orginalURL: </p>
+                <p> {{orginalURL}} </p>
+            </div>
+            <div class=content>
+                <p> miniURL: </p>
+                <p id="miniurl">{{miniURL}}</p>
+            </div>
+            <div>
+                <button onclick="location.href='../'">Home</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        extension = document.getElementById("miniurl").innerHTML;
+        document.getElementById("miniurl").innerHTML = window.location.origin + "/" + extension;
+    </script>
+
+</html>

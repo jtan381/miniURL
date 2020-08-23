@@ -35,3 +35,12 @@ class URL_Shortener:
             leadingzero = (3 - len(str(id))) * "0"
 
         return leadingzero + "".join(ret[::-1])
+
+    def getOrginalURL(self, extension):
+        mini2orginalURL = {v: k for k, v in self.url2miniurl.items()}
+        if(extension in mini2orginalURL):
+            orginalURL = mini2orginalURL[extension]
+        else:
+            orginalURL = None
+
+        return orginalURL

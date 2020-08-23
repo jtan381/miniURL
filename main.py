@@ -1,6 +1,8 @@
+#Flask framwork
 from flask import Flask, redirect, render_template, request
-import os
+from urllib.parse import urlparse
 from url_shortener import URL_Shortener
+import os
 
 url_shortener = URL_Shortener()
 
@@ -15,18 +17,15 @@ def main():
 def insertURL():
     formData =  request.form
     miniURL = url_shortener.shortener_url(formData)
-    return """<div><p> orginalURL: {} </p> <p> miniURL: http://jj-miniurl.tools/{} </p></div>""".format(formData['orginalURL'], miniURL)
+    return render_template("insert.html".format(miniURL), orginalURL = formData['orginalURL'], miniURL =miniURL)
 
 @app.route('/<short_url>')
 def redirect_to_url(short_url):
-    if(short_url in url_shortener.url2miniurl.values()):
-        orginalLink = list(url_shortener.url2miniurl.keys())[list(
-            url_shortener.url2miniurl.values()).index(short_url)]
+    orginalLink = url_shortener.getOrginalURL(short_url)
+    if(orginalLink):
         return redirect(orginalLink)
     else:
         return 'bad request!', 400
-
-
 
 @app.route('/remove')
 def removeURL():

@@ -4,21 +4,14 @@
   <head>
     <style>
       .wrapper {
-        /* color: blue;
-        font-family: verdana;
-        font-size: 300%; */
         width: 50%;
         display: grid;
         grid-template-rows: auto auto;
-        /* grid-template-columns: auto; */
       }
 
       .content {
-        /* color: red;
-        font-family: courier;
-        font-size: 160%; */
         display: grid;
-        grid-template-columns: 40% 50%;
+        grid-template-columns: 180px auto;
       }
 
     </style>
@@ -30,15 +23,17 @@
       <form action="/add" method="post">
         <div class="wrapper">
           <div class="content">
-            <label><b>orginalURL</b></label>
-            <input type="text" placeholder="Enter orginalURL" name="orginalURL" id="orginalURL" required>
+            <label><b>OrginalURL</b><label style="color: red;">*</label></label>
+            <input type="text" placeholder="Enter orginalURL" name="orginalURL" required>
           </div>
           <div class="content">
-            <label><b>customize extension</b></label>
-            <input type="text" placeholder="Enter customize extension" name="extension" id="extension">
+            <label><b>Customize extension</b></label>
+            <input type="text" placeholder="Enter customize extension" name="extension">
+
           </div>
+          <p>If customize extension is empty, an 3 characters extension will be automated generate.</p>
         </div>
-        <button class="generate">Generate</button>
+        <button>Generate</button>
       </form>
     </div>
   </body>
