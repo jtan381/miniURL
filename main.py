@@ -8,7 +8,7 @@ import os
 url_shortener = URL_Shortener()
 gsheet = Google_Sheet()
 gsheet.connect_gsheets()
-url_shortener.url2miniurl = gsheet.fetchAll_url2miniurl()
+url_shortener.id , url_shortener.url2miniurl = gsheet.fetchAll_url2miniurl()
 
 # Create Flask app.
 app = Flask(__name__)

@@ -14,12 +14,13 @@ class Google_Sheet():
   
     def fetchAll_url2miniurl(self):
         list_of_records = self.sheet.get_all_records()
+        totalRecord = len(list_of_records) +2 
 
         url2miniurl = {}
         for record in list_of_records:
             url2miniurl[record['orginalURL']] = record['miniURL']
 
-        return url2miniurl
+        return totalRecord, url2miniurl
 
     def write2gsheet(self, orginalURL, miniURL):
         lastrow = len(self.sheet.get_all_records()) +2

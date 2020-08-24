@@ -1,5 +1,3 @@
-
-
 class URL_Shortener():
 
     def __init__(self):
@@ -16,14 +14,17 @@ class URL_Shortener():
             miniurl = self.url2miniurl[orginal_url]
         else:
             update = True
-            if(extension):
+            mini2orginalURL = {v: k for k, v in self.url2miniurl.items()}
+            if(extension in mini2orginalURL):
+                miniurl = self.encode(self.id)
+                self.id += 1
+            elif(extension):
                 miniurl = extension
             else:
                 miniurl = self.encode(self.id)
                 self.id += 1
             self.url2miniurl[orginal_url] = miniurl
             
-
         return update, orginal_url, miniurl
 
     def encode(self, id):
