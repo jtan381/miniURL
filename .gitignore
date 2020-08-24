@@ -1,4 +1,6 @@
 
-__pycache__
+# Byte-compiled / optimized / DLL files
+__pycache__/
 
+# Secret file
 googleDriveAPI_secret.json
