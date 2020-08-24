@@ -1,26 +1,28 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-class Google_Auth():
+class Google_Sheet():
     def __init__(self):
         self.secret = 'googleDriveAPI_secret.json'
-        self.client = None
+        self.sheet = None
 
-    def connect_gdrive(self):
+    def connect_gsheets(self, filename="miniurl"):
         scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
         creds = ServiceAccountCredentials.from_json_keyfile_name(self.secret, scope)
-        self.client = gspread.authorize(creds)
+        client = gspread.authorize(creds)
+        self.sheet = client.open(filename).sheet1
   
-    def fetchAll_url2miniurl(self, filename="miniurl"):
-        # Find a workbook by name and open the first sheet
-        # Make sure you use the right name here.
-        sheet = self.client.open(filename).sheet1
-
-        # Extract and print all of the values
-        list_of_hashes = sheet.get_all_records()
+    def fetchAll_url2miniurl(self):
+        list_of_records = self.sheet.get_all_records()
 
         url2miniurl = {}
-        for item in list_of_hashes:
-            url2miniurl[item['orginalURL']] = item['miniURL']
+        for record in list_of_records:
+            url2miniurl[record['orginalURL']] = record['miniURL']
 
         return url2miniurl
+
+    def write2gsheet(self, orginalURL, miniURL):
+        lastrow = len(self.sheet.get_all_records()) +2
+        data = [orginalURL,miniURL]
+
+        self.sheet.insert_row(data, lastrow)

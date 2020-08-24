@@ -17,3 +17,6 @@ Install all dependencies that are required for the project by running:
 ```
 pip3 install -r requirements.txt
 ```
+
+## Final deliverables
+[Click here](http://jj-miniurl.tools/) to view it in the browser.

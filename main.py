@@ -2,14 +2,13 @@
 from flask import Flask, redirect, render_template, request
 from urllib.parse import urlparse
 from url_shortener import URL_Shortener
-from google_auth import Google_Auth
+from google_auth import Google_Sheet
 import os
 
-gdrive = Google_Auth()
-gdrive.connect_gdrive()
-url2miniurl = gdrive.fetchAll_url2miniurl()
-
-url_shortener = URL_Shortener(url2miniurl)
+url_shortener = URL_Shortener()
+gsheet = Google_Sheet()
+gsheet.connect_gsheets()
+url_shortener.url2miniurl = gsheet.fetchAll_url2miniurl()
 
 # Create Flask app.
 app = Flask(__name__)
@@ -21,8 +20,10 @@ def main():
 @app.route('/add', methods=["POST"])
 def insertURL():
     formData =  request.form
-    miniURL = url_shortener.shortener_url(formData)
-    return render_template("insert.html".format(miniURL), orginalURL = formData['orginalURL'], miniURL =miniURL)
+    update, orginalURL, miniURL = url_shortener.shortener_url(formData)
+    if (update):
+        gsheet.write2gsheet(orginalURL, miniURL)
+    return render_template("insert.html".format(miniURL), orginalURL = orginalURL, miniURL =miniURL)
 
 @app.route('/<short_url>')
 def redirect_to_url(short_url):
