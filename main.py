@@ -2,9 +2,14 @@
 from flask import Flask, redirect, render_template, request
 from urllib.parse import urlparse
 from url_shortener import URL_Shortener
+from google_auth import Google_Auth
 import os
 
-url_shortener = URL_Shortener()
+gdrive = Google_Auth()
+gdrive.connect_gdrive()
+url2miniurl = gdrive.fetchAll_url2miniurl()
+
+url_shortener = URL_Shortener(url2miniurl)
 
 # Create Flask app.
 app = Flask(__name__)

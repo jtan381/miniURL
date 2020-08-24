@@ -1,15 +1,14 @@
 class URL_Shortener:
 
-    def __init__(self):
-        self.url2miniurl = {
-            "https://www.linkedin.com/in/jia-jun-tan-915283a9/": 'linkin',
-            "https://github.com/jtan381": 'github'}
-
+    def __init__(self, url2miniurl):
+        self.url2miniurl = url2miniurl
         self.id = 1
 
     def shortener_url(self, formData):
         orginal_url = formData['orginalURL']
         extension = formData['extension']
+        if(orginal_url[-1]=="/"):
+            orginal_url = orginal_url[:-1]
         if(orginal_url in self.url2miniurl):
             miniurl = self.url2miniurl[orginal_url]
         else:
@@ -37,6 +36,7 @@ class URL_Shortener:
         return leadingzero + "".join(ret[::-1])
 
     def getOrginalURL(self, extension):
+        # print(self.url2miniurl)
         mini2orginalURL = {v: k for k, v in self.url2miniurl.items()}
         if(extension in mini2orginalURL):
             orginalURL = mini2orginalURL[extension]
