@@ -3,38 +3,66 @@
 
   <head>
     <style>
-      .wrapper {
-        width: 50%;
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
         display: grid;
-        grid-template-rows: auto auto;
+        padding-bottom: 10px;
+      }
+
+      .Wrapper {
+        justify-items: center;
+        background-color: #e3fdfd;
+        height: 100vh;
+        grid-template-rows: 25% auto;
+      }
+
+      .Wrapper2 {
+        grid-template-rows: repeat(4, auto);
+
       }
 
       .content {
-        display: grid;
-        grid-template-columns: 180px auto;
+        grid-template-columns: auto 320px;
+      }
+
+      #form {
+        justify-items: stretch;
       }
 
     </style>
   </head>
 
   <body>
-    <div class="container">
-      <h1>Create miniURL</h1>
-      <form action="/add" method="post">
-        <div class="wrapper">
-          <div class="content">
-            <label><b>OrginalURL</b><label style="color: red;">*</label></label>
-            <input type="text" placeholder="Enter orginalURL" name="orginalURL" required>
-          </div>
-          <div class="content">
-            <label><b>Customize extension</b></label>
-            <input type="text" placeholder="Enter customize extension" name="extension">
+    <div class="Wrapper">
+      <div style="align-items: end;">
+        <text style=" font-size: 500%; font-weight: bold; ">Welcome to miniURL</text>
+      </div>
+      <div style="margin: 100px 0px">
+        <form action="/add" method="post">
+          <div class="Wrapper2">
+            <div class="content">
+              <label><b>OrginalURL</b><label style="color: red;">*</label>:</label>
+              <input type="text" placeholder="Eg. https://www.linkedin.com/in/jia-jun-tan-915283a9/" name="orginalURL"
+                required>
+            </div>
+            <div class="content">
+              <label><b>Customize extension:</b></label>
+              <input type="text" placeholder="Eg. Linkin" name="extension">
 
+            </div>
+            <div>
+              <p>If customize extension is empty or taken, an 3 characters extension will be automated generate.</p>
+            </div>
+
+            <button style="margin: 0px 20%;">Generate</button>
           </div>
-          <p>If customize extension is empty or taken, an 3 characters extension will be automated generate.</p>
-        </div>
-        <button>Generate</button>
-      </form>
+
+        </form>
+      </div>
     </div>
   </body>
 
