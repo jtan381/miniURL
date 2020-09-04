@@ -7,25 +7,30 @@ class URL_Shortener():
     def shortener_url(self, formData):
         orginal_url = formData['orginalURL']
         extension = formData['extension']
+        status = ""
         update = False
         if(orginal_url[-1]=="/"):
             orginal_url = orginal_url[:-1]
         if(orginal_url in self.url2miniurl):
             miniurl = self.url2miniurl[orginal_url]
+            status = "Exist miniURL for orginalURL"
         else:
             update = True
             mini2orginalURL = {v: k for k, v in self.url2miniurl.items()}
             if(extension in mini2orginalURL):
                 miniurl = self.encode(self.id)
                 self.id += 1
+                status = "Customize extension taken"
             elif(extension):
                 miniurl = extension
+                status = "Successful created"
             else:
                 miniurl = self.encode(self.id)
                 self.id += 1
+                status = "Successful created"
             self.url2miniurl[orginal_url] = miniurl
             
-        return update, orginal_url, miniurl
+        return update, status, orginal_url, miniurl
 
     def encode(self, id):
         char = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"

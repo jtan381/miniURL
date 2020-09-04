@@ -20,10 +20,10 @@ def main():
 @app.route('/add', methods=["POST"])
 def insertURL():
     formData =  request.form
-    update, orginalURL, miniURL = url_shortener.shortener_url(formData)
+    update, status, orginalURL, miniURL = url_shortener.shortener_url(formData)
     if (update):
         gsheet.write2gsheet(orginalURL, miniURL)
-    return render_template("insert.html".format(miniURL), orginalURL = orginalURL, miniURL =miniURL)
+    return render_template("insert.html".format(miniURL), orginalURL = orginalURL, miniURL =miniURL, status=status)
 
 @app.route('/<short_url>')
 def redirect_to_url(short_url):

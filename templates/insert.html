@@ -6,7 +6,7 @@
             .wrapper {
                 width: 50%;
                 display: grid;
-                grid-template-rows: auto auto auto;
+                grid-template-rows: repeat(4, auto);
                 /* grid-template-columns: auto; */
             }
 
@@ -20,6 +20,11 @@
 
     <body>
         <div class=wrapper>
+            <div class=content>
+                <p> Status: </p>
+                <p> {{status}} </p>
+            </div>
+
             <div class=content>
                 <p> orginalURL: </p>
                 <p> {{orginalURL}} </p>
