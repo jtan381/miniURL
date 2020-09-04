@@ -4,8 +4,9 @@ Mini-URL is a URL shortening web service, which provides short aliases for redir
 
 ## Getting Started
 
-1. Run an AWS EC2 instance (free tire is enough).
-2. Clone or download all files from folder, and run from Main.py.
+1. Get authentication to google sheet. (Using google sheet as database)
+2. Run an AWS EC2 instance (free tire is enough).
+3. Clone or download all files from folder, and run from Main.py.
 
 ### Prerequisites
 
@@ -19,4 +20,4 @@ pip3 install -r requirements.txt
 ```
 
 ## Final deliverables
-[Click here](http://jj-miniurl.tools/) to view it in the browser.
+[jj-miniurl.tools](http://jj-miniurl.tools/) to view it in the browser.

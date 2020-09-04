@@ -27,3 +27,12 @@ class Google_Sheet():
         data = [orginalURL,miniURL]
 
         self.sheet.insert_row(data, lastrow)
+
+# testing
+def main():
+    gsheet = Google_Sheet()
+    gsheet.connect_gsheets()
+    print(gsheet.fetchAll_url2miniurl())
+
+if __name__ == "__main__":
+    main()
