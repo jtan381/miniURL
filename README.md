@@ -12,6 +12,8 @@ Mini-URL is a URL shortening web service, which provides short aliases for redir
 
 The program is written in python 3 evironment, package versions used for development are just below.
 ```
+oauth2client==4.1.3
+gspread==3.6.0
 Flask==1.1.1
 ```
 Install all dependencies that are required for the project by running:
