@@ -23,7 +23,7 @@ def insertURL():
     update, status, orginalURL, miniURL = url_shortener.shortener_url(formData)
     if (update):
         gsheet.write2gsheet(orginalURL, miniURL)
-    return render_template("insert.html", orginalURL = orginalURL, miniURL =miniURL, status=status)
+    return render_template("insert.html".format(miniURL), orginalURL = orginalURL, miniURL =miniURL, status=status)
 
 @app.route('/<short_url>')
 def redirect_to_url(short_url):
@@ -38,10 +38,9 @@ def removeURL():
     return ""
 
 
-@app.route('/directory')
+@app.route('/status')
 def retriveURL():
-
-    return render_template("directory.html", url2miniurl = url_shortener.url2miniurl)
+    return ""
 
 
 if __name__ == '__main__':
